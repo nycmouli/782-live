@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: basis
+Version: 0.0.0
+Summary: BAsis expansion for 1D quantum potential
+Home-page: https://github.com/nycmouli/782-live.git
+Author: Chandramouli Nyshadham
+Author-email: nycmouli@gmail.com
+License: MIT
+Description: # 782-live
+        understanding package stuff.. Basis expansion for 1D quantum potential
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
