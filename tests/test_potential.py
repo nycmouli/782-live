@@ -4,7 +4,20 @@ import numpy as np
 import pytest
 from basis.potential import Potential
 
+def test_getattr():
+    """Tests the attributes re-routing to potential.params.
+    """
 
+    pot= Potential("potentials/kp.cfg")
+    assert pot.w == pot.params["w"]
+
+    pot = Potential("potentials/bump.cfg")
+    assert pot.a == pot.params["a"]
+
+    pot = Potential("potentials/sho.cfg")
+    assert pot.shift == pot.params["shift"]
+    with pytest.raises(AttributeError):
+        pot.dummy
 
 def adjust(pot, **kwargs):
     """Adjusts the parameters of the potential.

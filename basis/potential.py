@@ -37,6 +37,14 @@ class Potential(object):
         self.parser = None
         self._parse_config()
 
+    def __getattr__(self,attr):
+        if attr in self.params:
+            return self.params[attr]
+        else:
+            emsg = "{} is not an attribute of Potential objects."
+            raise AttributeError(emsg.format(attr))
+
+
     def __call__(self,value):
         """Evaluates the potential for the given value(s).
         
@@ -70,7 +78,7 @@ class Potential(object):
 
 
 
-    def __mul__(self,value):
+    def __mul__(self,value): #pragma: no cover
         """Increases the strength of the potential by `value`.
         Args:
          value (float): how much to multiply by.
@@ -123,9 +131,12 @@ class Potential(object):
 
         for i, spec in self.parser.items("regions"):
             domain, sfunc = spec.split('|')
-            if "numpy" in sfunc:
+            if "numpy" in sfunc and "numpy" not in self.params:
                 import numpy as np
                 self.params["numpy"] = np
+            if "operator" in sfunc and "operator" not in self.params:
+                import operator
+                self.params["operator"] = operator
             xi,xf =eval(domain,self.params)
             function=eval(sfunc,self.params)
             self.regions[(xi,xf)]= function
